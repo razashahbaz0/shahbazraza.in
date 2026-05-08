@@ -1,30 +1,73 @@
+<!-- ========================= -->
+<!-- IMPORTANT FILES TO UPLOAD -->
+<!-- ========================= -->
+
+<!--
+1. profile.png
+2. network-glow.gif
+
+Keep BOTH files in SAME folder as index.html
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Shahbaz Raza | ISP Operations Specialist</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 
 :root{
 
   --accent:#007aff;
-  --accent2:#7c3aed;
+  --accent2:#8b5cf6;
 
   --text:#0f172a;
   --muted:#475569;
 
-  --white:rgba(255,255,255,0.72);
+  --glass:rgba(255,255,255,.12);
 
-  --border:rgba(255,255,255,0.34);
+  --border:rgba(255,255,255,.28);
 
-  --shadow:0 12px 40px rgba(15,23,42,0.10);
+  --shadow:0 10px 40px rgba(15,23,42,.10);
+
+}
+
+/* DARK MODE */
+
+@media(prefers-color-scheme:dark){
+
+:root{
+
+  --text:#e2e8f0;
+
+  --muted:#cbd5e1;
+
+  --glass:rgba(15,23,42,.34);
+
+  --border:rgba(255,255,255,.08);
+
+  --shadow:0 10px 40px rgba(0,0,0,.45);
+
+}
+
+body{
+
+  background:
+  radial-gradient(circle at top left,#1e1b4b 0%,transparent 30%),
+  radial-gradient(circle at bottom right,#0f172a 0%,transparent 30%),
+  linear-gradient(135deg,#020617,#0f172a) !important;
+
+}
 
 }
 
@@ -46,14 +89,14 @@ body{
 
   overflow-x:hidden;
 
+  cursor:none;
+
   background:
-  radial-gradient(circle at top left,#ffd7f5 0%,transparent 30%),
-  radial-gradient(circle at bottom right,#c6ecff 0%,transparent 30%),
+  radial-gradient(circle at top left,#ffd8ef 0%,transparent 30%),
+  radial-gradient(circle at bottom right,#cdeeff 0%,transparent 30%),
   linear-gradient(135deg,#f8fbff,#edf5ff);
 
   background-attachment:fixed;
-
-  cursor:none;
 
 }
 
@@ -69,9 +112,9 @@ body::before{
 
   pointer-events:none;
 
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity:.04;
 
-  z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 
 }
 
@@ -88,7 +131,7 @@ body::before{
 
 .glass{
 
-  background:rgba(255,255,255,0.12);
+  background:var(--glass);
 
   backdrop-filter:blur(24px) saturate(180%);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
@@ -120,33 +163,22 @@ nav{
 
   width:min(1200px,94%);
 
-  z-index:99999;
+  padding:16px 26px;
 
-  padding:16px 28px;
+  z-index:99999;
 
   display:flex;
 
   justify-content:space-between;
   align-items:center;
 
-  background:rgba(255,255,255,0.14);
+  background:rgba(255,255,255,.10);
 
   backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
 
-  border:1px solid rgba(255,255,255,0.28);
+  border:1px solid var(--border);
 
   border-radius:24px;
-
-  transition:.35s ease;
-
-}
-
-nav.scrolled{
-
-  background:rgba(255,255,255,0.22);
-
-  box-shadow:0 10px 35px rgba(0,0,0,0.08);
 
 }
 
@@ -161,8 +193,7 @@ nav.scrolled{
 .nav-links{
 
   display:flex;
-  align-items:center;
-  gap:28px;
+  gap:26px;
 
 }
 
@@ -170,19 +201,17 @@ nav a{
 
   text-decoration:none;
 
-  color:#334155;
+  color:var(--text);
 
   font-size:15px;
   font-weight:500;
-
-  transition:.3s;
 
   position:relative;
 
 }
 
-nav a:hover,
-nav a.active{
+nav a.active,
+nav a:hover{
   color:var(--accent);
 }
 
@@ -198,9 +227,9 @@ nav a.active::after{
   width:100%;
   height:2px;
 
-  background:var(--accent);
-
   border-radius:20px;
+
+  background:var(--accent);
 
 }
 
@@ -208,13 +237,33 @@ nav a.active::after{
 
 .hero{
 
+  position:relative;
+
+  overflow:hidden;
+
   min-height:100vh;
 
   display:flex;
 
   align-items:center;
 
-  padding:180px 0 100px;
+  padding:170px 0 100px;
+
+}
+
+.hero-gif{
+
+  position:absolute;
+
+  inset:0;
+
+  background:url("network-glow.gif") center/cover no-repeat;
+
+  opacity:.10;
+
+  filter:blur(1px);
+
+  z-index:-1;
 
 }
 
@@ -258,7 +307,7 @@ nav a.active::after{
 
   background:#22c55e;
 
-  box-shadow:0 0 14px #22c55e;
+  box-shadow:0 0 16px #22c55e;
 
 }
 
@@ -266,11 +315,11 @@ nav a.active::after{
 
   font-family:Poppins;
 
-  font-size:72px;
+  font-size:74px;
 
   line-height:1.08;
 
-  margin-bottom:24px;
+  margin-bottom:22px;
 
 }
 
@@ -278,9 +327,9 @@ nav a.active::after{
 
   font-size:20px;
 
-  color:var(--muted);
+  line-height:1.9;
 
-  line-height:1.8;
+  color:var(--muted);
 
   max-width:700px;
 
@@ -291,11 +340,12 @@ nav a.active::after{
 .btn-wrap{
 
   display:flex;
+
   gap:18px;
 
-  margin-top:34px;
-
   flex-wrap:wrap;
+
+  margin-top:36px;
 
 }
 
@@ -324,7 +374,7 @@ nav a.active::after{
 
   color:white;
 
-  box-shadow:0 14px 34px rgba(0,122,255,.22);
+  box-shadow:0 14px 34px rgba(0,122,255,.25);
 
 }
 
@@ -336,9 +386,7 @@ nav a.active::after{
 
   color:var(--text);
 
-  border:1px solid rgba(255,255,255,.38);
-
-  background:rgba(255,255,255,.15);
+  border:1px solid var(--border);
 
 }
 
@@ -348,14 +396,12 @@ nav a.active::after{
 
   position:relative;
 
-  padding:40px;
+  min-height:520px;
 
   display:flex;
 
   justify-content:center;
   align-items:center;
-
-  min-height:500px;
 
 }
 
@@ -368,9 +414,9 @@ nav a.active::after{
 
   border-radius:50%;
 
-  border:2px dashed rgba(255,255,255,.45);
+  border:2px dashed rgba(255,255,255,.28);
 
-  animation:spin 24s linear infinite;
+  animation:spin 22s linear infinite;
 
 }
 
@@ -388,19 +434,18 @@ nav a.active::after{
 
 .profile{
 
-  width:280px;
-  height:280px;
+  width:290px;
+  height:290px;
 
   border-radius:50%;
 
   overflow:hidden;
 
-  border:6px solid rgba(255,255,255,.55);
-
-  box-shadow:
-  0 24px 70px rgba(0,0,0,.18);
-
   position:relative;
+
+  border:6px solid rgba(255,255,255,.50);
+
+  box-shadow:0 24px 70px rgba(0,0,0,.20);
 
 }
 
@@ -422,7 +467,7 @@ nav a.active::after{
 
 .stats{
 
-  margin-top:36px;
+  margin-top:40px;
 
   display:grid;
 
@@ -435,6 +480,7 @@ nav a.active::after{
 .stat{
 
   padding:24px;
+
   text-align:center;
 
 }
@@ -443,7 +489,7 @@ nav a.active::after{
 
   font-family:Poppins;
 
-  font-size:32px;
+  font-size:34px;
 
   margin-bottom:8px;
 
@@ -463,7 +509,7 @@ section{
 
   padding:110px 0;
 
-  scroll-margin-top:140px;
+  scroll-margin-top:130px;
 
   opacity:0;
 
@@ -517,17 +563,57 @@ section.visible{
   line-height:1.9;
 }
 
+/* EXPERTISE */
+
 .grid{
 
   display:grid;
 
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
   gap:24px;
 
 }
 
-/* EXPERIENCE */
+.skill{
+
+  padding:34px 24px;
+
+  text-align:center;
+
+}
+
+.skill i{
+
+  font-size:34px;
+
+  margin-bottom:18px;
+
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+}
+
+.skill h4{
+
+  margin-bottom:10px;
+
+  font-size:20px;
+
+}
+
+.skill p{
+
+  color:var(--muted);
+
+  line-height:1.7;
+
+}
+
+/* TIMELINE */
 
 .timeline{
 
@@ -535,15 +621,15 @@ section.visible{
 
   flex-direction:column;
 
-  gap:26px;
+  gap:28px;
 
 }
 
 .job{
 
-  padding:34px;
-
   position:relative;
+
+  padding:34px;
 
 }
 
@@ -563,7 +649,7 @@ section.visible{
 
   background:linear-gradient(135deg,var(--accent2),var(--accent));
 
-  box-shadow:0 0 20px rgba(0,122,255,.45);
+  box-shadow:0 0 18px rgba(0,122,255,.5);
 
 }
 
@@ -577,9 +663,7 @@ section.visible{
 
 .job small{
 
-  color:#64748b;
-
-  font-size:15px;
+  color:var(--muted);
 
 }
 
@@ -587,7 +671,7 @@ section.visible{
 
   margin-top:22px;
 
-  padding-left:20px;
+  padding-left:22px;
 
 }
 
@@ -597,19 +681,27 @@ section.visible{
 
   line-height:1.8;
 
-  color:#334155;
+  color:var(--muted);
 
 }
 
-/* SKILLS */
+/* DASHBOARD */
 
-.skill{
+.dashboard{
 
-  padding:30px 26px;
+  overflow:hidden;
 
-  text-align:center;
+  padding:18px;
 
-  font-weight:600;
+}
+
+.dashboard img{
+
+  width:100%;
+
+  border-radius:20px;
+
+  display:block;
 
 }
 
@@ -619,7 +711,7 @@ section.visible{
 
   display:grid;
 
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
   gap:24px;
 
@@ -631,17 +723,23 @@ section.visible{
 
 }
 
-.contact-box h4{
+.contact-box i{
 
-  margin-bottom:14px;
+  font-size:30px;
 
-  font-size:22px;
+  margin-bottom:16px;
+
+  background:linear-gradient(135deg,var(--accent2),var(--accent));
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
 
 }
 
-.contact-box p{
+.contact-box h4{
 
-  color:var(--muted);
+  margin-bottom:12px;
 
 }
 
@@ -657,11 +755,22 @@ section.visible{
 
 footer{
 
-  padding:50px 20px;
+  padding:70px 20px;
 
   text-align:center;
 
-  color:#64748b;
+  color:var(--muted);
+
+}
+
+.footer-line{
+
+  width:120px;
+  height:1px;
+
+  margin:0 auto 30px;
+
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
 
 }
 
@@ -711,90 +820,66 @@ footer{
 
 @media(max-width:980px){
 
-  body{
-    cursor:auto;
-  }
+body{
+  cursor:auto;
+}
 
-  .cursor-dot,
-  .cursor-ring{
-    display:none;
-  }
+.cursor-dot,
+.cursor-ring{
+  display:none;
+}
 
-  nav{
+.nav-links{
+  display:none;
+}
 
-    width:94%;
+.logo{
+  font-size:22px;
+}
 
-    padding:16px 20px;
+.hero-grid{
+  grid-template-columns:1fr;
+  text-align:center;
+}
 
-  }
+.hero h1{
+  font-size:52px;
+}
 
-  .nav-links{
-    display:none;
-  }
+.hero p{
+  margin:auto;
+}
 
-  .logo{
-    font-size:22px;
-  }
+.btn-wrap{
+  justify-content:center;
+}
 
-  .hero{
+.profile-card{
+  min-height:auto;
+  padding:40px;
+}
 
-    padding-top:150px;
+.profile-ring{
+  width:290px;
+  height:290px;
+}
 
-  }
+.profile{
+  width:220px;
+  height:220px;
+}
 
-  .hero-grid{
+.stats{
+  grid-template-columns:1fr;
+}
 
-    grid-template-columns:1fr;
-
-    text-align:center;
-
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .hero p{
-    margin:auto;
-  }
-
-  .btn-wrap{
-    justify-content:center;
-  }
-
-  .profile-card{
-    min-height:auto;
-    padding:34px;
-  }
-
-  .profile-ring{
-
-    width:290px;
-    height:290px;
-
-  }
-
-  .profile{
-
-    width:220px;
-    height:220px;
-
-  }
-
-  .stats{
-
-    grid-template-columns:1fr;
-
-  }
-
-  section{
-    padding:90px 0;
-  }
+section{
+  padding:90px 0;
+}
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -804,9 +889,9 @@ footer{
 <div class="cursor-dot" id="dot"></div>
 <div class="cursor-ring" id="ring"></div>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 
-<nav id="navbar">
+<nav>
 
 <div class="logo">
 Shahbaz Raza
@@ -815,10 +900,9 @@ Shahbaz Raza
 <div class="nav-links">
 
 <a href="#about">About</a>
+<a href="#expertise">Expertise</a>
 <a href="#experience">Experience</a>
-<a href="#skills">Skills</a>
-<a href="#education">Education</a>
-<a href="#certifications">Certifications</a>
+<a href="#dashboard">Systems</a>
 <a href="#contact">Contact</a>
 
 </div>
@@ -828,6 +912,8 @@ Shahbaz Raza
 <!-- HERO -->
 
 <header class="hero">
+
+<div class="hero-gif"></div>
 
 <div class="container">
 
@@ -839,19 +925,19 @@ Shahbaz Raza
 
 <span></span>
 
-ISP Operations Specialist
+Available For Telecom Operations Roles
 
 </div>
 
 <h1>
 
-Building Seamless Broadband Operations & Subscriber Experiences
+ISP Operations & Broadband Systems Specialist
 
 </h1>
 
 <p>
 
-Specialized in RADIUS-based telecom systems, ISP operations, broadband provisioning, CRM workflows, subscriber lifecycle management, and revenue optimization.
+Specialized in RADIUS authentication systems, broadband provisioning, subscriber lifecycle management, CRM operations, billing workflows, retention monitoring, and telecom operational coordination.
 
 </p>
 
@@ -871,9 +957,9 @@ View Experience
 
 <div class="stat glass">
 
-<h3>2+</h3>
+<h3 class="counter" data-target="24">0</h3>
 
-<p>Years Telecom Operations</p>
+<p>Hours Operations Coordination</p>
 
 </div>
 
@@ -881,15 +967,15 @@ View Experience
 
 <h3>ISP</h3>
 
-<p>RADIUS & CRM Specialist</p>
+<p>CRM & RADIUS Specialist</p>
 
 </div>
 
 <div class="stat glass">
 
-<h3>24/7</h3>
+<h3 class="counter" data-target="100">0</h3>
 
-<p>Operational Coordination</p>
+<p>Workflow Monitoring</p>
 
 </div>
 
@@ -922,7 +1008,7 @@ View Experience
 <h2>About Me</h2>
 
 <p>
-Telecom operations, broadband management, CRM systems, and customer lifecycle expertise.
+Telecom operations, CRM systems, broadband lifecycle management, and operational coordination expertise.
 </p>
 
 </div>
@@ -957,6 +1043,102 @@ I oversee onboarding, renewals, suspensions, complaint resolution, invoice recon
 
 </section>
 
+<!-- EXPERTISE -->
+
+<section id="expertise">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Operational Expertise</h2>
+
+<p>
+Core telecom operational capabilities and ISP workflow management.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="skill glass">
+
+<i class="fa-solid fa-server"></i>
+
+<h4>ISP CRM Operations</h4>
+
+<p>
+Managing subscriber lifecycle workflows using ISP CRM systems.
+</p>
+
+</div>
+
+<div class="skill glass">
+
+<i class="fa-solid fa-network-wired"></i>
+
+<h4>RADIUS Systems</h4>
+
+<p>
+Authentication systems and broadband provisioning coordination.
+</p>
+
+</div>
+
+<div class="skill glass">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h4>Dashboard Analytics</h4>
+
+<p>
+Operational monitoring, reporting, and retention optimization.
+</p>
+
+</div>
+
+<div class="skill glass">
+
+<i class="fa-solid fa-credit-card"></i>
+
+<h4>Billing Operations</h4>
+
+<p>
+Invoice workflows, reconciliation, and renewal coordination.
+</p>
+
+</div>
+
+<div class="skill glass">
+
+<i class="fa-solid fa-headset"></i>
+
+<h4>Complaint Resolution</h4>
+
+<p>
+Managing escalations and subscriber issue workflows.
+</p>
+
+</div>
+
+<div class="skill glass">
+
+<i class="fa-solid fa-globe"></i>
+
+<h4>Broadband Coordination</h4>
+
+<p>
+FUP management, provisioning, and network coordination.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 <!-- EXPERIENCE -->
 
 <section id="experience">
@@ -968,7 +1150,7 @@ I oversee onboarding, renewals, suspensions, complaint resolution, invoice recon
 <h2>Professional Experience</h2>
 
 <p>
-Operational leadership across telecom systems, broadband provisioning, CRM workflows, and revenue management.
+Operational leadership across telecom systems and broadband workflows.
 </p>
 
 </div>
@@ -987,19 +1169,15 @@ Zita Telecom | June 2024 – Present
 
 <ul>
 
-<li>Managing OneRadius ISP CRM platform for complete subscriber lifecycle operations.</li>
+<li>Managing OneRadius ISP CRM platform for subscriber lifecycle operations.</li>
 
-<li>Handling RADIUS-based subscriber authentication and broadband service provisioning.</li>
+<li>Handling RADIUS-based subscriber authentication systems.</li>
 
-<li>Monitoring subscriber statuses including Active, Online, Expired, Suspended, and Disabled accounts.</li>
+<li>Supervising broadband provisioning and operational workflows.</li>
 
-<li>Supervising invoice generation, payment reconciliation, and renewal tracking.</li>
+<li>Managing invoice reconciliation, renewals, and CRM dashboards.</li>
 
-<li>Coordinating bandwidth provisioning and FUP management with networking teams.</li>
-
-<li>Analyzing dashboards and operational reports for retention optimization.</li>
-
-<li>Managing complaint workflows and escalation resolution processes.</li>
+<li>Coordinating complaint resolution and escalation workflows.</li>
 
 </ul>
 
@@ -1017,35 +1195,11 @@ Zita Telecom | Feb 2024 – May 2024
 
 <ul>
 
-<li>Expanded broadband subscriber acquisition through targeted outreach strategies.</li>
+<li>Expanded broadband subscriber acquisition workflows.</li>
 
-<li>Managed CRM lead workflows, feasibility validation, and CAF processing.</li>
+<li>Managed CRM lead validation and activation coordination.</li>
 
-<li>Collaborated with technical teams for activation and provisioning.</li>
-
-<li>Supported telecom revenue growth and operational coordination.</li>
-
-</ul>
-
-</div>
-
-<div class="job glass">
-
-<h3>
-Enterprise Manager – Operations & Financial Management
-</h3>
-
-<small>
-AK Enterprises | Nov 2020 – Jan 2024
-</small>
-
-<ul>
-
-<li>Managed inventory, vendors, operational workflows, and billing systems.</li>
-
-<li>Handled budgeting, pricing strategy, and profitability optimization.</li>
-
-<li>Maintained financial documentation and operational reporting.</li>
+<li>Supported telecom revenue operations and provisioning workflows.</li>
 
 </ul>
 
@@ -1057,122 +1211,27 @@ AK Enterprises | Nov 2020 – Jan 2024
 
 </section>
 
-<!-- SKILLS -->
+<!-- DASHBOARD -->
 
-<section id="skills">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Core Skills</h2>
-
-<p>
-Technical, operational, and telecom-focused capabilities.
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="skill glass">OneRadius ISP CRM Platform</div>
-<div class="skill glass">RADIUS Authentication Systems</div>
-<div class="skill glass">Subscriber Lifecycle Management</div>
-<div class="skill glass">Broadband Provisioning</div>
-<div class="skill glass">ISP Billing Operations</div>
-<div class="skill glass">CRM Dashboard Analytics</div>
-<div class="skill glass">Network & FUP Coordination</div>
-<div class="skill glass">Complaint Resolution</div>
-<div class="skill glass">Retention Optimization</div>
-<div class="skill glass">Telecom Operations Strategy</div>
-<div class="skill glass">Financial Planning</div>
-<div class="skill glass">Cross-Functional Leadership</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- EDUCATION -->
-
-<section id="education">
+<section id="dashboard">
 
 <div class="container">
 
 <div class="section-title">
 
-<h2>Education</h2>
+<h2>Operational Systems</h2>
 
 <p>
-Academic foundation in finance and business operations.
+Broadband CRM systems, dashboards, and operational workflow environments.
 </p>
 
 </div>
 
-<div class="card glass">
+<div class="dashboard glass">
 
-<p>
+<!-- Replace dashboard-preview.png with your own screenshot -->
 
-<strong>Bachelor of Commerce (Finance Honours)</strong>
-
-<br><br>
-
-Kazi Nazrul University, Asansol
-
-<br><br>
-
-Aug 2017 – Oct 2020
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CERTIFICATIONS -->
-
-<section id="certifications">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Certifications</h2>
-
-<p>
-Professional learning across analytics, marketing, HR, and management.
-</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card glass">
-The Non Technical Skills of Effective Data Scientists – LinkedIn
-</div>
-
-<div class="card glass">
-Fundamentals of Digital Marketing – United Latino Students Association
-</div>
-
-<div class="card glass">
-Managing Employee Compensation – University of Minnesota
-</div>
-
-<div class="card glass">
-Recruiting, Hiring & Onboarding – University of Minnesota
-</div>
-
-<div class="card glass">
-Managing Employee Performance – University of Minnesota
-</div>
-
-<div class="card glass">
-Preparing to Manage Human Resources – University of Minnesota
-</div>
+<img src="dashboard-preview.png" alt="Operational Dashboard">
 
 </div>
 
@@ -1191,7 +1250,7 @@ Preparing to Manage Human Resources – University of Minnesota
 <h2>Contact</h2>
 
 <p>
-Open to telecom operations, ISP management, CRM systems, and business collaboration opportunities.
+Open for telecom operations, ISP coordination, and CRM management opportunities.
 </p>
 
 </div>
@@ -1200,43 +1259,37 @@ Open to telecom operations, ISP management, CRM systems, and business collaborat
 
 <div class="contact-box glass">
 
-<h4>Phone</h4>
+<i class="fa-solid fa-phone"></i>
 
-<p>
+<h4>Phone</h4>
 
 <a href="tel:+917029779788">
 +91 70297 79788
 </a>
 
-</p>
-
 </div>
 
 <div class="contact-box glass">
 
-<h4>Email</h4>
+<i class="fa-solid fa-envelope"></i>
 
-<p>
+<h4>Email</h4>
 
 <a href="mailto:mail@shahbazraza.in">
 mail@shahbazraza.in
 </a>
 
-</p>
-
 </div>
 
 <div class="contact-box glass">
 
-<h4>LinkedIn</h4>
+<i class="fa-brands fa-linkedin"></i>
 
-<p>
+<h4>LinkedIn</h4>
 
 <a href="https://linkedin.com/in/razashahbaz" target="_blank">
 linkedin.com/in/razashahbaz
 </a>
-
-</p>
 
 </div>
 
@@ -1250,7 +1303,25 @@ linkedin.com/in/razashahbaz
 
 <footer>
 
-© 2026 Shahbaz Raza • shahbazraza.in
+<div class="footer-line"></div>
+
+<h3 style="font-family:Poppins;margin-bottom:12px;">
+Shahbaz Raza
+</h3>
+
+<p>
+ISP Operations Specialist
+</p>
+
+<br>
+
+<p>
+mail@shahbazraza.in
+</p>
+
+<p>
+Kolkata, West Bengal
+</p>
 
 </footer>
 
@@ -1291,25 +1362,7 @@ requestAnimationFrame(animateCursor);
 
 animateCursor();
 
-/* NAVBAR */
-
-window.addEventListener("scroll",()=>{
-
-const nav=document.getElementById("navbar");
-
-if(window.scrollY>40){
-
-nav.classList.add("scrolled");
-
-}else{
-
-nav.classList.remove("scrolled");
-
-}
-
-});
-
-/* SECTION ANIMATION */
+/* SECTIONS */
 
 const sections=document.querySelectorAll("section");
 
@@ -1325,7 +1378,7 @@ entry.target.classList.add("visible");
 
 });
 
-},{threshold:0.15});
+},{threshold:.15});
 
 sections.forEach(section=>{
 
@@ -1364,6 +1417,38 @@ link.classList.add("active");
 }
 
 });
+
+});
+
+/* COUNTER */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute("data-target");
+
+const count=+counter.innerText;
+
+const speed=5;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+target/speed);
+
+setTimeout(updateCounter,40);
+
+}else{
+
+counter.innerText=target+"+";
+
+}
+
+};
+
+updateCounter();
 
 });
 
